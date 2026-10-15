@@ -82,7 +82,7 @@ jobs:
             ./frontend
 
       - name: DevSecOps — Trivy Vulnerability Scan (Backend)
-        uses: aquasecurity/trivy-action@v0.30.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ env.BACKEND_IMAGE }}:${{ github.sha }}
           scan-type: 'image'
@@ -91,7 +91,7 @@ jobs:
           exit-code: '0'
 
       - name: DevSecOps — Trivy Vulnerability Scan (Frontend)
-        uses: aquasecurity/trivy-action@v0.30.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ env.FRONTEND_IMAGE }}:${{ github.sha }}
           scan-type: 'image'
