@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helpdesk-broken-image
+  namespace: helpdesk
+  labels:
+    app: broken-image-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: broken-image-lab
+  template:
+    metadata:
+      labels:
+        app: broken-image-lab
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/example/helpdesk-backend:v999.nonexistent-tag
+          ports:
+            - containerPort: 8000

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: helpdesk-broken-service
+  namespace: helpdesk
+  labels:
+    app: broken-service-lab
+spec:
+  type: ClusterIP
+  selector:
+    app: label-that-does-not-exist
+  ports:
+    - port: 8000
+      targetPort: 8000
