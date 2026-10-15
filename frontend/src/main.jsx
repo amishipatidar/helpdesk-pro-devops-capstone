@@ -222,9 +222,9 @@ export function App() {
           </div>
 
           <div className="user-profile">
-            <div className="user-avatar">NR</div>
+            <div className="user-avatar">AP</div>
             <div className="user-info">
-              <div className="user-name">Nile Rodgers</div>
+              <div className="user-name">Amishi Patidar</div>
               <div className="user-role">DevOps Engineer</div>
             </div>
           </div>
