@@ -121,21 +121,28 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v4
 
-      - name: Configure Kubectl Context
-        if: "${{ secrets.KUBE_CONFIG_DATA != '' }}"
+      - name: Configure Kubectl Context & Deploy via Helm
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         run: |
-          mkdir -p ~/.kube
-          echo "$KUBE_CONFIG_DATA" | base64 -d > ~/.kube/config
-
-      - name: Deploy HelpDesk Pro via Helm
-        if: "${{ secrets.KUBE_CONFIG_DATA != '' }}"
-        run: |
-          helm upgrade --install helpdesk ./helm/helpdesk \
-            --namespace helpdesk \
-            --create-namespace \
-            --set backend.image=${{ env.BACKEND_IMAGE }} \
-            --set backend.tag=${{ github.sha }} \
-            --set frontend.image=${{ env.FRONTEND_IMAGE }} \
-            --set frontend.tag=${{ github.sha }}
+          if [ -n "$KUBE_CONFIG_DATA" ]; then
+            echo "KUBE_CONFIG_DATA detected. Configuring kubectl..."
+            mkdir -p ~/.kube
+            echo "$KUBE_CONFIG_DATA" | base64 -d > ~/.kube/config
+            echo "Deploying HelpDesk Pro via Helm to cluster..."
+            helm upgrade --install helpdesk ./helm/helpdesk \
+              --namespace helpdesk \
+              --create-namespace \
+              --set backend.image=${{ env.BACKEND_IMAGE }} \
+              --set backend.tag=${{ github.sha }} \
+              --set frontend.image=${{ env.FRONTEND_IMAGE }} \
+              --set frontend.tag=${{ github.sha }}
+          else
+            echo "KUBE_CONFIG_DATA not set (cluster not connected). Running Helm template lint validation:"
+            helm template helpdesk ./helm/helpdesk \
+              --namespace helpdesk \
+              --set backend.image=${{ env.BACKEND_IMAGE }} \
+              --set backend.tag=${{ github.sha }} \
+              --set frontend.image=${{ env.FRONTEND_IMAGE }} \
+              --set frontend.tag=${{ github.sha }}
+          fi
