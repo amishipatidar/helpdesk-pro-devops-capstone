@@ -1,0 +1,8 @@
+# Example variable values for Terraform deployment
+# Copy to terraform.tfvars: cp terraform.tfvars.example terraform.tfvars
+# WARNING: NEVER commit terraform.tfvars containing sensitive secrets or access keys.
+
+aws_region   = "ap-south-1"
+environment  = "dev"
+cluster_name = "helpdesk-eks"
+vpc_cidr     = "10.20.0.0/16"
