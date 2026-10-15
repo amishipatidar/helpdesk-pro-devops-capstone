@@ -1,0 +1,18 @@
+{{- if .Values.monitoring.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: helpdesk-backend-monitor
+  labels:
+    release: kube-prometheus-stack
+    app: helpdesk-backend
+spec:
+  selector:
+    matchLabels:
+      app: helpdesk-backend
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: {{ .Values.monitoring.serviceMonitor.interval | default "15s" }}
+      scrapeTimeout: 10s
+{{- end }}

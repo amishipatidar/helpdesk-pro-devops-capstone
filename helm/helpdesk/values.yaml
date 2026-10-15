@@ -1,0 +1,43 @@
+frontend:
+  image: ghcr.io/YOUR_ORG/helpdesk-frontend
+  tag: latest
+  replicaCount: 2
+  port: 8080
+
+backend:
+  image: ghcr.io/YOUR_ORG/helpdesk-backend
+  tag: latest
+  replicaCount: 2
+  port: 8000
+
+postgres:
+  enabled: true
+  host: helpdesk-postgres
+  database: helpdesk
+  username: helpdesk
+  password: helpdesk
+  storage: 5Gi
+
+ingress:
+  enabled: false
+  className: nginx
+  host: helpdesk.local
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 60
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+monitoring:
+  serviceMonitor:
+    enabled: true
+    interval: 15s

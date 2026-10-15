@@ -1,0 +1,31 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: helpdesk-ingress
+  labels:
+    app: helpdesk
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.className | default "nginx" | quote }}
+    nginx.ingress.kubernetes.io/proxy-body-size: "16m"
+spec:
+  ingressClassName: {{ .Values.ingress.className | default "nginx" }}
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: helpdesk-backend
+                port:
+                  number: 8000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: helpdesk-frontend
+                port:
+                  number: 80
+{{- end }}

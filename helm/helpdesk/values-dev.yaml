@@ -1,0 +1,10 @@
+ingress:
+  enabled: true
+  className: nginx
+  host: helpdesk.local
+
+frontend:
+  replicaCount: 2
+
+backend:
+  replicaCount: 2

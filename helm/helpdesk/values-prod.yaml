@@ -1,0 +1,18 @@
+ingress:
+  enabled: true
+  className: nginx
+  host: helpdesk.company.com
+
+frontend:
+  replicaCount: 3
+
+backend:
+  replicaCount: 3
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: 1000m
+    memory: 1Gi

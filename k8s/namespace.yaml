@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: helpdesk
+  labels:
+    app.kubernetes.io/name: helpdesk-pro
+    app.kubernetes.io/part-of: helpdesk
