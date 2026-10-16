@@ -267,7 +267,7 @@ Below are the operational verification screenshots validating each module's comp
 *Passing GitHub Actions workflow executing code checkout, Python test suite, multi-stage container builds, Trivy CVE vulnerability scans, and publishing to GHCR.*
 
 ### M7 — Terraform Cloud Infrastructure Plan
-![M7 Terraform Plan](docs/screenshots/m7_terraform_plan.png)
+![M7 Terraform Plan](docs/screenshots/m7_terraform_plan_execution.png)
 *Terraform execution plan generating 57 AWS cloud resources: High-Availability VPC across 2 AZs, public/private subnets, Internet/NAT Gateways, and EKS Cluster with managed node groups.*
 
 ---
