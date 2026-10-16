@@ -239,3 +239,43 @@ kubectl get hpa -n helpdesk
    kubectl apply -f troubleshooting/broken-service.yaml
    kubectl get endpoints broken-service
    ```
+
+---
+
+## 11. Submission Verification & Evidence Screenshots
+
+Below are the operational verification screenshots validating each module's completion according to the capstone grading rubric:
+
+### M1 — Application Dashboard (React + FastAPI + PostgreSQL)
+![M1 Application Dashboard](docs/screenshots/m1_application_dashboard.png)
+*Live HelpDesk Pro support operations console running locally on port 3000 with real-time incident queue, category filtering, and status management.*
+
+### M2 — Automated Pytest Suite Passing
+![M2 Pytest Results](docs/screenshots/m2_pytest_passing.png)
+*Automated execution of 13 unit and contract tests covering API routes, validation rules, health checks, readiness probes, and metrics endpoints (13/13 passed in 0.05s).*
+
+### M3 — Clean Git History & Conventional Commits
+![M3 Git Commits](docs/screenshots/m3_git_commits.png)
+*Structured commit trajectory showing incremental atomic development following conventional commit standards (`feat:`, `fix:`, `chore:`, `infra:`).*
+
+### M4 — Multi-Container Docker Compose Stack
+![M4 Docker Containers](docs/screenshots/m4_docker_containers.png)
+*Healthy container orchestration across `helpdesk-frontend:3000`, `helpdesk-backend:8000`, and `helpdesk-postgres:5432`.*
+
+### M5 & M6 — CI/CD Automation & Trivy Security Scans
+![M5 CI/CD & Trivy](docs/screenshots/m5_github_actions_green.png)
+*Passing GitHub Actions workflow executing code checkout, Python test suite, multi-stage container builds, Trivy CVE vulnerability scans, and publishing to GHCR.*
+
+### M7 — Terraform Cloud Infrastructure Plan
+![M7 Terraform Plan](docs/screenshots/m7_terraform_plan.png)
+*Terraform execution plan generating 57 AWS cloud resources: High-Availability VPC across 2 AZs, public/private subnets, Internet/NAT Gateways, and EKS Cluster with managed node groups.*
+
+---
+
+## 12. Student & Capstone Information
+
+- **Student Name**: Amishi Patidar
+- **Program**: Scaler School of Technology (SST) DevOps Capstone
+- **Session**: Session 21 — Final Capstone Submission
+- **Repository**: [https://github.com/amishipatidar/helpdesk-pro-devops-capstone](https://github.com/amishipatidar/helpdesk-pro-devops-capstone)
+- **Container Registry**: [GitHub Container Registry (GHCR)](https://github.com/amishipatidar/helpdesk-pro-devops-capstone/pkgs/container/helpdesk-backend)
