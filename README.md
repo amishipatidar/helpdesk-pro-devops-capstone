@@ -275,7 +275,5 @@ Below are the operational verification screenshots validating each module's comp
 ## 12. Student & Capstone Information
 
 - **Student Name**: Amishi Patidar
-- **Program**: Scaler School of Technology (SST) DevOps Capstone
-- **Session**: Session 21 — Final Capstone Submission
 - **Repository**: [https://github.com/amishipatidar/helpdesk-pro-devops-capstone](https://github.com/amishipatidar/helpdesk-pro-devops-capstone)
 - **Container Registry**: [GitHub Container Registry (GHCR)](https://github.com/amishipatidar/helpdesk-pro-devops-capstone/pkgs/container/helpdesk-backend)
